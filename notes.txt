@@ -1,0 +1,24 @@
+Soluciones:
+1. Tengo un contador que me da los colores y cuando llega a 4 vuelve a empezar. Falla.
+
+2. Trabajarlo como un Sudoku, al primero le pongo un número y luego lleno los vecinos les pongo los posibles y continuo. Falla, se vuelve repetitivo y todos terminan con 3 opciones.
+
+3. Aplicó la segunda solucion y en vez de recorrer todos los nodos, solo recorro los nodos vecinos y aplicó el siguiente número. Puede fallar porque mientras más se aleja más probable que colisiones.
+
+4. Solución 3 pero recorro los vecinos para evitar colisiones.
+
+Tal vez se pueda paralelizar haciendo que el número que indica el color represente una diferencia de color y no un color. 
+
+Resolver de manera serial las fronteras y luego correr en paralelo las zonas
+
+Registrar la cantidad de cambios para evitar un loop infinito en un problema sin solución
+
+Mapa de llaves con conexión
+Nodos doblemente enlazados
+Empezar con el que mayor conexiones tiene
+Ir en orden del que mas conexiones tenga, paralelizar usandolos como raiz?
+repite la mayor cantidad de colores posibles
+
+
+trate de retornar los colores que ya estaban usados pero me di cuenta que era mas facil retornar los que no estaban usados aun
+trate de colorear los vecinos pero me di cuenta que no vale la pena porue no podemos predecir el camino
