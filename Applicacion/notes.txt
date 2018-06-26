@@ -22,3 +22,7 @@ repite la mayor cantidad de colores posibles
 
 trate de retornar los colores que ya estaban usados pero me di cuenta que era mas facil retornar los que no estaban usados aun
 trate de colorear los vecinos pero me di cuenta que no vale la pena porue no podemos predecir el camino
+
+Paralelizar
+Cada thread guarda todos los que ha paralelizado y luego hace un shift para conectar con la frontera de thread, pueden haber otras colisiones en la frontera del thread
+todos pueden leer, pero para escribir tiene que escribirse antes de que alguien lea, esto vuelve a ser lineal, a menos que los threads puedan chequear si voy a colorear un nodo que necesito verificar... hacerle un lock cuando lea un nodo 	y mientras lo coloreo! creo que esto funca!

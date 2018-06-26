@@ -1,15 +1,17 @@
 require 'set'
-load 'circle.rb'
+load 'map_ocean.rb'
 @to_visit = Set[]
 @colored = Set[]
 
 def four_color_theorem
-  @to_visit.add(popular_node)
+  # @to_visit.add(popular_node)
   while @to_visit.any?
     current = @to_visit.to_a.first
-    color_node current, available_colors(current)
+    bool = color_node current, available_colors(current)
+    return false unless bool
     @to_visit -= @colored
   end
+  true
 end
 
 def paint(node, color)
@@ -18,9 +20,11 @@ end
 
 def color_node(node, available_colors)
   color = available_colors.to_a.first
-  raise 'No colors left' if color.nil?
+  # raise 'No colors left' if color.nil?
+  return false if color.nil?
   paint node, color
   @colored.add(node)
+  true
 end
 
 def neighbor_colors(root)
@@ -53,5 +57,13 @@ def print_graph
   end
 end
 
-four_color_theorem
+count = 1
+loop do
+  @to_visit = Set[]
+  @colored = Set[]
+  @to_visit.add(count.to_s)
+  puts count.to_s
+  break if four_color_theorem
+  count += 1
+end
 print_graph
