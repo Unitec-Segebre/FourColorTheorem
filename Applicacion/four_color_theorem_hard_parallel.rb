@@ -23,10 +23,12 @@ def four_color_theorem(graph)
   writer.close
   graph[:colors] = reader.gets.to_i
   threads.each { |pid| Process.kill('HUP', pid) }
+  thread_count.times { Process.wait }
 end
 
 def offset_colors(graph, thread_count, offset)
-  graph[:colors] = ((4**(graph[:connections].size - 2)) * (offset / thread_count.to_f)).to_i
+  graph[:colors] = ((4**(graph[:connections].size - 1)) * (offset / thread_count.to_f)).to_i
+  puts "Just got color #{graph[:colors].to_s(4).rjust(graph[:connections].size, '0')} on thread #{offset}"
 end
 
 def get_aware(graph)
